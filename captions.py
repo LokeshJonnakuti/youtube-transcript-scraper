@@ -1,4 +1,6 @@
 # modify these values
+import secrets
+
 filename = 'videos.csv'                                           # filname with video ids
 colname = 'contentDetails_videoId'                                # column storing video ids
 publishedcolname = 'contentDetails_videoPublishedAt'              # column storing video upload time
@@ -18,7 +20,6 @@ adblock_path = None
 from time import sleep
 import csv
 import json
-import random
 import os.path
 
 from seleniumwire import webdriver
@@ -82,7 +83,7 @@ def gettranscript(driver, videoid, publishedAt):
         return msg
 
     # cool down
-    sleep(random.uniform(sleeptime[0],sleeptime[1]))
+    sleep(secrets.SystemRandom().uniform(sleeptime[0],sleeptime[1]))
 
     # clear all requests
     del driver.requests
